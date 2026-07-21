@@ -175,7 +175,7 @@ async def receive_caption(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==========================
 
 def main():
-
+    threading.Thread(target=run_web, daemon=True).start()
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
