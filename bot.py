@@ -1,3 +1,6 @@
+import os
+import threading
+from flask import Flask
 from telegram import Update, InputMediaPhoto
 from telegram.ext import (
     Application,
@@ -12,6 +15,16 @@ from telegram.ext import (
 # ==========================
 
 BOT_TOKEN = "8384351425:AAFVpUBgvo67ElYOcWgECPJCt5GbIOtOL9Y"
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Daraz Telegram Bot is Running ✅"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
 
 ADMIN_ID = 1451579464
 
